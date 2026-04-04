@@ -1,0 +1,1088 @@
+{
+  "address": "2zpBm2o5Sxw1GXpH4eSvqVqVLUPphfpM2BxADg2g7B5c",
+  "metadata": {
+    "name": "drip_protocol",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "claim",
+      "discriminator": [
+        62,
+        198,
+        214,
+        193,
+        213,
+        159,
+        108,
+        210
+      ],
+      "accounts": [
+        {
+          "name": "receiver_authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "receiver",
+          "writable": true,
+          "relations": [
+            "stream_vault"
+          ]
+        },
+        {
+          "name": "stream_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "stream_vault.stream_id",
+                "account": "StreamVault"
+              }
+            ]
+          }
+        },
+        {
+          "name": "stream_state",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  114,
+                  101,
+                  97,
+                  109
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "stream_vault.stream_id",
+                "account": "StreamVault"
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "close_stream",
+      "discriminator": [
+        255,
+        241,
+        196,
+        212,
+        95,
+        93,
+        160,
+        89
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "payer",
+          "writable": true,
+          "relations": [
+            "stream_vault"
+          ]
+        },
+        {
+          "name": "receiver",
+          "writable": true,
+          "relations": [
+            "stream_vault"
+          ]
+        },
+        {
+          "name": "stream_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "stream_vault.stream_id",
+                "account": "StreamVault"
+              }
+            ]
+          }
+        },
+        {
+          "name": "stream_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  114,
+                  101,
+                  97,
+                  109
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "stream_vault.stream_id",
+                "account": "StreamVault"
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "commit_stream_state",
+      "discriminator": [
+        20,
+        56,
+        162,
+        122,
+        166,
+        13,
+        40,
+        130
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "stream_vault",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "stream_vault.stream_id",
+                "account": "StreamVault"
+              }
+            ]
+          }
+        },
+        {
+          "name": "stream_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  114,
+                  101,
+                  97,
+                  109
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "stream_vault.stream_id",
+                "account": "StreamVault"
+              }
+            ]
+          }
+        },
+        {
+          "name": "magic_program",
+          "address": "Magic11111111111111111111111111111111111111"
+        },
+        {
+          "name": "magic_context",
+          "writable": true,
+          "address": "MagicContext1111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "delegate_stream_state",
+      "discriminator": [
+        179,
+        26,
+        57,
+        182,
+        209,
+        170,
+        193,
+        154
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "stream_vault"
+          ]
+        },
+        {
+          "name": "stream_vault",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "stream_vault.stream_id",
+                "account": "StreamVault"
+              }
+            ]
+          }
+        },
+        {
+          "name": "buffer_stream_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  98,
+                  117,
+                  102,
+                  102,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "stream_state"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                29,
+                171,
+                37,
+                87,
+                47,
+                41,
+                11,
+                167,
+                18,
+                118,
+                84,
+                133,
+                106,
+                225,
+                250,
+                94,
+                226,
+                180,
+                23,
+                125,
+                65,
+                4,
+                78,
+                49,
+                33,
+                54,
+                214,
+                235,
+                105,
+                35,
+                85,
+                51
+              ]
+            }
+          }
+        },
+        {
+          "name": "delegation_record_stream_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  101,
+                  108,
+                  101,
+                  103,
+                  97,
+                  116,
+                  105,
+                  111,
+                  110
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "stream_state"
+              }
+            ],
+            "program": {
+              "kind": "account",
+              "path": "delegation_program"
+            }
+          }
+        },
+        {
+          "name": "delegation_metadata_stream_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  100,
+                  101,
+                  108,
+                  101,
+                  103,
+                  97,
+                  116,
+                  105,
+                  111,
+                  110,
+                  45,
+                  109,
+                  101,
+                  116,
+                  97,
+                  100,
+                  97,
+                  116,
+                  97
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "stream_state"
+              }
+            ],
+            "program": {
+              "kind": "account",
+              "path": "delegation_program"
+            }
+          }
+        },
+        {
+          "name": "stream_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  114,
+                  101,
+                  97,
+                  109
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "stream_vault.stream_id",
+                "account": "StreamVault"
+              }
+            ]
+          }
+        },
+        {
+          "name": "owner_program",
+          "address": "2zpBm2o5Sxw1GXpH4eSvqVqVLUPphfpM2BxADg2g7B5c"
+        },
+        {
+          "name": "delegation_program",
+          "address": "DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": {
+              "name": "DelegateStreamStateArgs"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "open_stream",
+      "discriminator": [
+        205,
+        39,
+        151,
+        131,
+        10,
+        188,
+        219,
+        17
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "receiver"
+        },
+        {
+          "name": "stream_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "args.stream_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "stream_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  114,
+                  101,
+                  97,
+                  109
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "args.stream_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "args",
+          "type": {
+            "defined": {
+              "name": "OpenStreamArgs"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "process_undelegation",
+      "discriminator": [
+        196,
+        28,
+        41,
+        206,
+        48,
+        37,
+        51,
+        167
+      ],
+      "accounts": [
+        {
+          "name": "base_account",
+          "writable": true
+        },
+        {
+          "name": "buffer"
+        },
+        {
+          "name": "payer",
+          "writable": true
+        },
+        {
+          "name": "system_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "account_seeds",
+          "type": {
+            "vec": "bytes"
+          }
+        }
+      ]
+    },
+    {
+      "name": "tick_stream",
+      "discriminator": [
+        57,
+        86,
+        251,
+        99,
+        195,
+        61,
+        126,
+        180
+      ],
+      "accounts": [
+        {
+          "name": "crank",
+          "signer": true
+        },
+        {
+          "name": "stream_vault",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "stream_vault.stream_id",
+                "account": "StreamVault"
+              }
+            ]
+          }
+        },
+        {
+          "name": "stream_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  114,
+                  101,
+                  97,
+                  109
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "stream_vault.stream_id",
+                "account": "StreamVault"
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "undelegate_stream_state",
+      "discriminator": [
+        160,
+        68,
+        18,
+        92,
+        3,
+        118,
+        229,
+        59
+      ],
+      "accounts": [
+        {
+          "name": "payer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "stream_vault",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "stream_vault.stream_id",
+                "account": "StreamVault"
+              }
+            ]
+          }
+        },
+        {
+          "name": "stream_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  116,
+                  114,
+                  101,
+                  97,
+                  109
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "stream_vault.stream_id",
+                "account": "StreamVault"
+              }
+            ]
+          }
+        },
+        {
+          "name": "magic_program",
+          "address": "Magic11111111111111111111111111111111111111"
+        },
+        {
+          "name": "magic_context",
+          "writable": true,
+          "address": "MagicContext1111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "StreamState",
+      "discriminator": [
+        7,
+        127,
+        34,
+        194,
+        119,
+        142,
+        214,
+        87
+      ]
+    },
+    {
+      "name": "StreamVault",
+      "discriminator": [
+        238,
+        159,
+        152,
+        248,
+        226,
+        133,
+        62,
+        16
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "StreamClaimed",
+      "discriminator": [
+        215,
+        120,
+        176,
+        35,
+        43,
+        239,
+        59,
+        229
+      ]
+    },
+    {
+      "name": "StreamClosed",
+      "discriminator": [
+        14,
+        206,
+        32,
+        10,
+        248,
+        82,
+        169,
+        234
+      ]
+    },
+    {
+      "name": "StreamOpened",
+      "discriminator": [
+        25,
+        201,
+        33,
+        201,
+        201,
+        74,
+        252,
+        33
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "InvalidStreamId",
+      "msg": "The stream id must be greater than zero."
+    },
+    {
+      "code": 6001,
+      "name": "InvalidStreamRate",
+      "msg": "The stream rate must be greater than zero."
+    },
+    {
+      "code": 6002,
+      "name": "InvalidDepositAmount",
+      "msg": "The deposit amount must be greater than zero."
+    },
+    {
+      "code": 6003,
+      "name": "StreamClosed",
+      "msg": "The stream is already closed."
+    },
+    {
+      "code": 6004,
+      "name": "NothingToClaim",
+      "msg": "There is nothing available to claim."
+    },
+    {
+      "code": 6005,
+      "name": "Unauthorized",
+      "msg": "The provided accounts are not authorized for this action."
+    },
+    {
+      "code": 6006,
+      "name": "StreamAccountMismatch",
+      "msg": "The provided stream accounts do not belong to the same stream."
+    },
+    {
+      "code": 6007,
+      "name": "MathOverflow",
+      "msg": "A checked math operation overflowed."
+    },
+    {
+      "code": 6008,
+      "name": "InsufficientVaultBalance",
+      "msg": "The vault cannot satisfy the requested transfer."
+    },
+    {
+      "code": 6009,
+      "name": "AccountingInvariantViolated",
+      "msg": "The stream accounting invariant was violated."
+    }
+  ],
+  "types": [
+    {
+      "name": "DelegateStreamStateArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "validator",
+            "type": {
+              "option": "pubkey"
+            }
+          },
+          {
+            "name": "commit_frequency_ms",
+            "type": {
+              "option": "u32"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "OpenStreamArgs",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "stream_id",
+            "type": "u64"
+          },
+          {
+            "name": "rate_lamports_per_sec",
+            "type": "u64"
+          },
+          {
+            "name": "deposit_lamports",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StreamClaimed",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "stream_id",
+            "type": "u64"
+          },
+          {
+            "name": "receiver",
+            "type": "pubkey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "total_claimed",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StreamClosed",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "stream_id",
+            "type": "u64"
+          },
+          {
+            "name": "payer",
+            "type": "pubkey"
+          },
+          {
+            "name": "receiver",
+            "type": "pubkey"
+          },
+          {
+            "name": "total_streamed",
+            "type": "u64"
+          },
+          {
+            "name": "receiver_earned",
+            "type": "u64"
+          },
+          {
+            "name": "payer_refunded",
+            "type": "u64"
+          },
+          {
+            "name": "closed_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StreamOpened",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "stream_id",
+            "type": "u64"
+          },
+          {
+            "name": "payer",
+            "type": "pubkey"
+          },
+          {
+            "name": "receiver",
+            "type": "pubkey"
+          },
+          {
+            "name": "rate_lamports_per_sec",
+            "type": "u64"
+          },
+          {
+            "name": "deposited",
+            "type": "u64"
+          },
+          {
+            "name": "created_at",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StreamState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "stream_id",
+            "type": "u64"
+          },
+          {
+            "name": "streamed_so_far",
+            "type": "u64"
+          },
+          {
+            "name": "receiver_claimable",
+            "type": "u64"
+          },
+          {
+            "name": "last_tick",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StreamStatus",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Active"
+          },
+          {
+            "name": "Closed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "StreamVault",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "stream_id",
+            "type": "u64"
+          },
+          {
+            "name": "payer",
+            "type": "pubkey"
+          },
+          {
+            "name": "receiver",
+            "type": "pubkey"
+          },
+          {
+            "name": "rate_lamports_per_sec",
+            "type": "u64"
+          },
+          {
+            "name": "deposited",
+            "type": "u64"
+          },
+          {
+            "name": "claimed",
+            "type": "u64"
+          },
+          {
+            "name": "status",
+            "type": {
+              "defined": {
+                "name": "StreamStatus"
+              }
+            }
+          },
+          {
+            "name": "created_at",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ],
+  "constants": [
+    {
+      "name": "DEFAULT_COMMIT_FREQUENCY_MS",
+      "type": "u32",
+      "value": "10000"
+    },
+    {
+      "name": "STREAM_STATE_SEED",
+      "type": "bytes",
+      "value": "[115, 116, 114, 101, 97, 109]"
+    },
+    {
+      "name": "STREAM_VAULT_SEED",
+      "type": "bytes",
+      "value": "[118, 97, 117, 108, 116]"
+    }
+  ]
+}
